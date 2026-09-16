@@ -37,7 +37,7 @@
   --font-display: "Archivo Black", "Arial Black", "Helvetica Neue", Impact, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
-  --step--1: clamp(0.72rem, 0.68rem + 0.2vw, 0.8rem);
+  --step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.875rem);   /* 12.5 - 14px */
   --step-0:  clamp(0.88rem, 0.84rem + 0.22vw, 1rem);
   --step-1:  clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
   --step-2:  clamp(1.4rem, 1.2rem + 1vw, 2rem);
@@ -162,7 +162,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .nav__link {
   position: relative; text-decoration: none; text-transform: uppercase;
-  font-size: var(--step--1); letter-spacing: .12em; font-weight: 700;
+  font-size: 0.8rem; letter-spacing: .12em; font-weight: 700;
   padding: 9px 16px; border: var(--bw) solid var(--line); background: transparent;
   transition: transform .15s var(--ease), background-color .15s var(--ease), color .15s var(--ease), box-shadow .15s var(--ease);
 }
@@ -312,7 +312,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: #101010; color: #fff; font-size: 0.7rem; font-weight: 700;
   letter-spacing: .12em; padding: 3px 9px; white-space: nowrap; margin-top: 3px;
 }
-.now__val { font-size: var(--step--1); line-height: 1.6; }
+.now__val { font-size: var(--step--1); line-height: 1.8; }
 .now p { margin: 0; }
 
 /* ---------- 9. GRIDS ---------- */
@@ -425,7 +425,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .tl-role { font-size: var(--step-1); margin-bottom: 4px; }
 .tl-org { font-size: var(--step-0); color: var(--orange); margin: 0 0 12px; font-weight: 700; }
 .tl-points { display: grid; gap: 8px; margin-bottom: 14px; }
-.tl-points li { position: relative; padding-left: 20px; font-size: var(--step--1); color: var(--muted); line-height: 1.6; }
+.tl-points li { position: relative; padding-left: 20px; font-size: var(--step--1); color: var(--muted); line-height: 1.75; }
 .tl-points li::before { content: "▸"; position: absolute; left: 0; color: var(--orange); }
 
 /* ---------- 14. STATS ---------- */
@@ -507,7 +507,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .case__tagline { font-size: var(--step-0); color: var(--ink); margin: 0; font-weight: 700; }
 .case__body > p { color: var(--muted); font-size: var(--step--1); margin: 0; }
 .case__facts { display: grid; gap: 10px; margin: 4px 0; }
-.case__facts li { font-size: var(--step--1); color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
+.case__facts li { font-size: var(--step--1); line-height: 1.75; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
 .case__k {
   background: var(--ink); color: var(--bg); font-size: 0.68rem; font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase; padding: 2px 9px; height: fit-content; white-space: nowrap;
@@ -523,7 +523,203 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 
 
-/* ---------- 21. THE CAT ---------- */
+
+/* =========================================================
+   YAPP CORNER - the informal half of the site.
+   Hub, poems, ideas wall, blog catalogue and post pages.
+   ========================================================= */
+
+/* ---------- 21. THE YAPP NAV BUTTON ---------- */
+.nav__link--yapp {
+  background: var(--orange); color: var(--on-accent);
+  border-color: var(--line);
+  box-shadow: 3px 3px 0 var(--shadow-col);
+}
+.nav__link--yapp:hover { box-shadow: 5px 5px 0 var(--shadow-col); }
+.nav__link--yapp[aria-current="page"] { background: var(--orange); color: var(--on-accent); }
+
+/* ---------- 22. YAPP HUB ---------- */
+.yapp-grid { display: grid; gap: clamp(20px, 3vw, 30px); grid-template-columns: 1fr; }
+@media (min-width: 820px) { .yapp-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.yapp-card {
+  position: relative; display: flex; flex-direction: column; gap: 14px;
+  min-height: clamp(260px, 34vw, 330px);
+  padding: clamp(22px, 3vw, 32px);
+  border: var(--bw) solid var(--line);
+  box-shadow: var(--sh) var(--sh) 0 var(--shadow-col);
+  color: var(--on-accent); text-decoration: none; overflow: hidden;
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.yapp-card:hover { transform: translate(-5px, -5px); box-shadow: calc(var(--sh) + 5px) calc(var(--sh) + 5px) 0 var(--shadow-col); }
+.yapp-card h2 { font-size: var(--step-2); line-height: 1; }
+.yapp-card .hindi { font-family: var(--font-deva); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.35; text-transform: none; }
+.yapp-card p { font-size: var(--step--1); margin: 0; max-width: 34ch; }
+.yapp-card__kind {
+  font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+}
+.yapp-card__go { margin-top: auto; font-weight: 700; font-size: var(--step--1); letter-spacing: .1em; text-transform: uppercase; }
+.yapp-card__deco { position: absolute; right: -18px; bottom: -22px; opacity: .22; pointer-events: none; }
+.yapp-card__deco svg { width: clamp(110px, 16vw, 165px); height: auto; }
+
+/* ---------- 23. POEMS ---------- */
+:root { --font-deva: "Tiro Devanagari Hindi", "Noto Sans Devanagari", Georgia, serif; }
+
+.poem-page { max-width: 760px; margin-inline: auto; }
+.poem-title-deva {
+  font-family: var(--font-deva); text-transform: none; letter-spacing: 0;
+  font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.25;
+}
+.poem {
+  border: var(--bw) solid var(--line); background: var(--bg-soft);
+  box-shadow: var(--sh) var(--sh) 0 var(--shadow-col);
+  padding: clamp(24px, 4vw, 44px); margin-bottom: clamp(22px, 3vw, 34px);
+}
+.poem__head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 18px;
+  padding-bottom: 14px; border-bottom: 2px dashed var(--muted);
+}
+.poem__title {
+  font-family: var(--font-deva); font-weight: 400; text-transform: none;
+  letter-spacing: 0; font-size: clamp(1.4rem, 3.4vw, 2rem); line-height: 1.3;
+}
+.poem__title--latin { font-family: var(--font-display); text-transform: uppercase; letter-spacing: -.02em; }
+.poem__date { font-size: var(--step--1); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.poem__body {
+  font-family: var(--font-deva); font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 2.1; white-space: pre-line; margin: 0;
+}
+.poem__body--latin { font-family: var(--font-mono); font-size: var(--step-0); line-height: 2; }
+.poem__note { margin: 18px 0 0; font-size: var(--step--1); color: var(--muted); font-style: italic; }
+
+/* ---------- 24. IDEAS WALL ---------- */
+.notes {
+  display: grid; gap: clamp(22px, 3vw, 34px);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  padding-block: 14px;
+}
+.note {
+  position: relative; display: block; width: 100%; text-align: left;
+  background: var(--note, #f6e58d); color: #1a1a1a;
+  border: 0; padding: 34px 22px 22px;
+  font-family: var(--font-mono); font-size: var(--step--1); line-height: 1.7;
+  box-shadow: 5px 6px 14px rgba(0, 0, 0, .35);
+  cursor: pointer;
+  transform: rotate(var(--tilt, -1.5deg));
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.note:hover, .note:focus-visible {
+  transform: rotate(0deg) translateY(-5px) scale(1.02);
+  box-shadow: 8px 10px 20px rgba(0, 0, 0, .45);
+  z-index: 2;
+}
+/* the bit of tape */
+.note::before {
+  content: ""; position: absolute; top: -11px; left: 50%;
+  width: 84px; height: 24px; transform: translateX(-50%) rotate(var(--tape, 2deg));
+  background: rgba(255, 255, 255, .55);
+  border-left: 1px solid rgba(0, 0, 0, .08); border-right: 1px solid rgba(0, 0, 0, .08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .18);
+}
+.note__meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+.note__date { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .65; }
+.note__tag {
+  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  background: #1a1a1a; color: #fff; padding: 2px 8px;
+}
+.note h3 {
+  font-family: var(--font-mono); font-weight: 700; text-transform: none; letter-spacing: 0;
+  font-size: var(--step-0); line-height: 1.4; margin-bottom: 8px;
+}
+.note__body { margin: 0; }
+.note__more { display: none; margin-top: 10px; }
+.note.is-open .note__more { display: block; }
+.note__toggle {
+  margin-top: 12px; font-size: .68rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; opacity: .6;
+}
+.note.is-open { transform: rotate(0deg); }
+
+/* ---------- 25. BLOG CATALOGUE ---------- */
+.catalog { display: grid; gap: 0; border-top: var(--bw) solid var(--line); }
+.entry {
+  display: grid; gap: 6px 26px; grid-template-columns: 1fr;
+  padding: clamp(20px, 3vw, 30px) clamp(6px, 1.5vw, 18px);
+  border-bottom: var(--bw) solid var(--line);
+  text-decoration: none; color: inherit;
+  transition: background-color .16s var(--ease), padding-left .16s var(--ease);
+}
+@media (min-width: 760px) { .entry { grid-template-columns: 132px 1fr auto; align-items: baseline; } }
+.entry:hover { background: var(--bg-soft); padding-left: clamp(14px, 2.5vw, 28px); }
+.entry__date { font-size: var(--step--1); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.entry__title { font-size: var(--step-1); line-height: 1.15; margin-bottom: 6px; }
+.entry:hover .entry__title { color: var(--orange); }
+.entry__excerpt { font-size: var(--step--1); color: var(--muted); margin: 0; max-width: 62ch; }
+.entry__meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+@media (min-width: 760px) { .entry__meta { margin-top: 0; justify-content: flex-end; } }
+
+/* ---------- 26. BLOG POST ---------- */
+.post { max-width: 720px; margin-inline: auto; }
+.post__head { margin-bottom: clamp(26px, 4vw, 44px); }
+.post__head h1 { font-size: var(--step-3); margin-bottom: 16px; }
+.post__meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-size: var(--step--1); color: var(--muted); }
+.prose { font-size: var(--step-0); line-height: 1.95; }
+.prose > * + * { margin-top: 1.3em; }
+.prose h2 { font-size: var(--step-2); margin-top: 1.8em; }
+.prose h3 { font-size: var(--step-1); margin-top: 1.6em; }
+.prose p { margin-bottom: 0; }
+.prose ul { display: grid; gap: 10px; }
+.prose ul li { position: relative; padding-left: 22px; }
+.prose ul li::before { content: "\25B8"; position: absolute; left: 0; color: var(--orange); }
+.prose blockquote {
+  margin: 1.6em 0; padding: 18px 24px;
+  border-left: var(--bw) solid var(--orange); background: var(--bg-soft);
+  font-style: italic; color: var(--ink);
+}
+.prose code {
+  font-family: var(--font-mono); font-size: .9em;
+  background: var(--bg-soft); border: 2px solid var(--line); padding: 1px 6px;
+}
+.prose pre {
+  background: var(--bg-soft); border: var(--bw) solid var(--line);
+  padding: 18px; overflow-x: auto; box-shadow: 4px 4px 0 var(--shadow-col);
+}
+.prose pre code { border: 0; padding: 0; background: none; }
+.prose a { color: inherit; border-bottom: 2px solid var(--orange); text-decoration: none; }
+.prose a:hover { background: var(--orange); color: var(--on-accent); }
+.post__foot {
+  margin-top: clamp(36px, 5vw, 60px); padding-top: 26px;
+  border-top: var(--bw) solid var(--line);
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; align-items: center;
+}
+
+/* ---------- 27. EMPTY / PLACEHOLDER STATE ---------- */
+.placeholder {
+  border: var(--bw) dashed var(--muted); background: transparent;
+  padding: clamp(20px, 3vw, 30px); color: var(--muted);
+  font-size: var(--step--1); line-height: 1.8;
+}
+.placeholder strong { color: var(--ink); }
+.placeholder code {
+  font-family: var(--font-mono); background: var(--bg-soft);
+  border: 2px solid var(--line); padding: 1px 6px; color: var(--ink);
+}
+
+/* ---------- 27b. INLINE CODE ---------- */
+/* JetBrains Mono ligates "--" into a single long dash, which mangles CSS
+   custom property names like --note. Turn ligatures off wherever code shows. */
+code, pre {
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+}
+.note code {
+  background: rgba(0, 0, 0, .09);
+  border: 1px solid rgba(0, 0, 0, .22);
+  padding: 0 5px; font-size: .92em;
+}
+
+/* ---------- 28. THE CAT ---------- */
 /* Sits on the footer's top edge. Asleep in dark mode, awake in light,
    meows when petted. Purely decorative - nothing depends on it. */
 .footer { position: relative; }
@@ -591,8 +787,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   .cat__bubble { transition: none; }
 }
 
-/* ---------- 22. COMPACT HEADER ON SMALL SCREENS ---------- */
-@media (max-width: 680px) {
+/* ---------- 29. COMPACT HEADER ON SMALL + MEDIUM SCREENS ---------- */
+/* The full header (wordmark + socials + 5 nav items + toggle) only fits on
+   one row from 1040px up - measured, not guessed. Below that it wrapped to
+   two rows and got TALLER than the phone layout, so everything under 1040px
+   uses the compact single-row scrolling nav instead. */
+@media (max-width: 1039px) {
   .header__inner { padding-block: 10px; gap: 10px; }
   .brand { gap: 10px; }
   /* socials live in the footer at this size, so the header stays short */
@@ -607,6 +807,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
   .nav::-webkit-scrollbar { display: none; }
   .nav__link { flex: 0 0 auto; padding: 8px 13px; }
+  /* the Yapp button is the odd one out - pull it to the front of the
+     scrollable strip so it is visible without scrolling the nav */
+  .nav__link--yapp { order: -1; }
   /* pin the toggle to the brand row so it never scrolls out of reach */
   .theme-toggle { position: absolute; top: 10px; right: var(--gutter); z-index: 2; }
 }
@@ -615,9 +818,38 @@ ul { margin: 0; padding: 0; list-style: none; }
   .footer__inner { flex-direction: column; align-items: flex-start; }
 }
 
-/* ---------- 23. PRINT ---------- */
+/* ---------- 30. PRINT ---------- */
 @media print {
-  .header, .footer, .cursor-ring, .cta, .portrait__ring, .cat { display: none !important; }
-  body { background: #fff; color: #000; }
-  .card, .pub { box-shadow: none; }
+  /* Chrome that means nothing on paper */
+  .header, .footer, .cursor-ring, .cta, .portrait__ring, .cat,
+  .btn, .filters, .placeholder, .skip-link, .nav { display: none !important; }
+
+  /* CRITICAL: scroll-reveal leaves sections at opacity 0 until they are
+     scrolled past. Without this, printing an unscrolled page produces a
+     blank sheet. */
+  .js .reveal, .reveal { opacity: 1 !important; transform: none !important; }
+
+  body {
+    background: #fff !important; color: #000 !important;
+    background-image: none !important;
+    font-size: 10.5pt; line-height: 1.5;
+  }
+  .section { padding-block: 10pt; }
+  .rule { background: #000; height: 1pt; }
+  .card, .pub, .case, .stats, .now, .poem { box-shadow: none !important; border-color: #000 !important; }
+  .now { background: #fff !important; color: #000 !important; }
+  .now__key, .case__k, .chip--solid { background: #000 !important; color: #fff !important; }
+  .chip { border-color: #000 !important; color: #000 !important; background: #fff !important; }
+  a { color: #000 !important; text-decoration: none; }
+
+  /* keep an entry from being split across two sheets */
+  .tl-item, .pub, .case, .poem, .note, .entry { break-inside: avoid; page-break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+
+  /* the CV page prints as a document, so let it use the full sheet */
+  .wrap { max-width: none; padding-inline: 0; }
+  .timeline::before { display: none; }
+  .tl-item { padding-left: 0 !important; }
+  .tl-item::before { display: none; }
+  .tl-when { position: static !important; width: auto !important; text-align: left !important; margin-bottom: 4pt; }
 }
