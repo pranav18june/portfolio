@@ -180,6 +180,31 @@
     nodes.forEach(function (n) { io.observe(n); });
   }
 
+  /* ---------- sticky-note wall: click a note to expand it ---------- */
+  function initNotes() {
+    var notes = document.querySelectorAll(".note");
+    if (!notes.length) return;
+
+    notes.forEach(function (note) {
+      var more = note.querySelector(".note__more");
+      var toggle = note.querySelector(".note__toggle");
+
+      /* a note with nothing hidden is not interactive */
+      if (!more) {
+        note.setAttribute("tabindex", "-1");
+        note.style.cursor = "default";
+        return;
+      }
+
+      note.setAttribute("aria-expanded", "false");
+      note.addEventListener("click", function () {
+        var open = note.classList.toggle("is-open");
+        note.setAttribute("aria-expanded", String(open));
+        if (toggle) toggle.textContent = open ? "Click to collapse" : "Click to expand";
+      });
+    });
+  }
+
   /* ---------- the cat ---------- */
   function initCat() {
     var cat = document.querySelector("[data-cat]");
@@ -202,6 +227,13 @@
     });
   }
 
+  /* ---------- print / save-as-PDF buttons ---------- */
+  function initPrint() {
+    document.querySelectorAll("[data-print]").forEach(function (btn) {
+      btn.addEventListener("click", function () { window.print(); });
+    });
+  }
+
   /* ---------- misc ---------- */
   function initYear() {
     document.querySelectorAll("[data-year]").forEach(function (el) {
@@ -216,7 +248,9 @@
     initPortrait();
     initFilters();
     initReveal();
+    initNotes();
     initCat();
+    initPrint();
     initYear();
   }
 
