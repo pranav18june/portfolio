@@ -10,9 +10,15 @@
 <meta property="og:title" content="CV — Pranav Mamane">
 <meta property="og:description" content="Research experience, education and skills.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Pranav Mamane">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -39,6 +45,7 @@
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.6v2.6M12 19.8v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M1.6 12h2.6M19.8 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
+      <a class="nav__link nav__link--yapp" href="yapp.html">Yapp corner</a>
     </nav>
   </div>
 </header>
@@ -55,8 +62,13 @@
         education and everything that happened alongside.
       </p>
       <div class="hero__actions">
-        <!-- TODO: drop your CV pdf in the project and point this at it -->
-        <a class="btn btn--primary" href="#">Download CV (PDF)</a>
+        <!-- Prints this page through the print stylesheet, which the browser
+             saves as a PDF. Swap for <a href="cv.pdf" download> if you ever
+             want to hand out a designed PDF instead. -->
+        <button class="btn btn--primary" type="button" data-print>
+          <svg viewBox="0 0 24 24"><path d="M7 3h10v4H7zM5 9h14a2 2 0 0 1 2 2v6h-4v4H7v-4H3v-6a2 2 0 0 1 2-2zm4 8h6v4H9z"/></svg>
+          Download CV (PDF)
+        </button>
         <a class="btn btn--ghost" href="mailto:pranav18june@gmail.com">Email me</a>
       </div>
     </div>
@@ -270,7 +282,8 @@
   <div class="wrap footer__inner">
     <div class="footer__meta">
       <strong>&copy; <span data-year>2026</span> Pranav Mamane</strong>
-      AI safety &amp; security research &middot; IIIT Allahabad
+      AI safety &amp; security research &middot; IIIT Allahabad<br>
+      <span style="opacity:.75">Last updated: September 2026</span>
     </div>
     <div class="footer__meta">My cozy corner on the interwebs.</div>
       <div class="socials footer__socials">
